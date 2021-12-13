@@ -4,6 +4,7 @@ import unittest
 from configparser import MissingSectionHeaderError
 
 from cpmapi import PM_ERR_AGAIN, PM_ERR_INST, PM_ERR_PMID
+
 from pmdahdb import (
     _HANA2_SPS_01,
     _HANA2_SPS_04,
