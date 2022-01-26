@@ -18,7 +18,7 @@ pcp-pmda-hdb is a [Performance Co-Pilot (PCP)](https://pcp.io/) Performance Metr
 pcp-pmda-hdb connects to HANA via the [hdbcli](https://pypi.org/project/hdbcli/) Python module.
 ```bash
 pip3 install hdbcli
-dnf install -y pcp python3-pcp
+dnf install -y pcp python3-pcp pcp-zeroconf
 ```
 
 ### Install
@@ -46,7 +46,7 @@ sudo ./Install
 > Check hdb metrics have appeared ... 188 metrics and 1522 values
 
 # check hdb-pmda is marked as installed
-pcp | grep -e 'pmda:.* hdb.*'
+pcp | grep hdb
 ```
 
 ## Usage
@@ -62,6 +62,18 @@ hdb.cpu.total_time_user_milliseconds [CPU time spent in user mode in millisecond
 hdb.alerts.active_count [Number of currently active alerts reported by the statistics server per rating]
 hdb.memory.oom_events.statement_memory_limit_count [Number of out-of-memory (OOM) events since last reset caused by a statement memory limit.]
 hdb.memory.oom_events.process_allocation_limit_count [Number of out-of-memory (OOM) events since last reset caused by a process allocation limit.]
+[...]
+```
+
+Read all metrics
+```
+pminfo -Ff hdb
+
+hdb.io.aysnc_requests_count
+    inst [0 or "hxehost"] value 10240
+
+hdb.io.file_handles_count
+    inst [0 or "hxehost"] value 2816
 [...]
 ```
 
